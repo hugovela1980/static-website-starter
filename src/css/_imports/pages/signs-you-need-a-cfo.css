@@ -1,0 +1,843 @@
+.signs-page {
+  --signs-hero-title-font-size: clamp(3rem, 2rem + 4.5vw, 6.5rem);
+
+  --signs-page-eyebrow-font-size: clamp(1.5rem, 1rem + 1vw, 2.5rem);
+  --signs-page-title-font-size: clamp(2rem, 1.5rem + 3vw, 5.5rem);
+  --signs-page-lead-text-font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.75rem);
+  --signs-page-subtitle-font-size: clamp(1.75rem, 2rem + 2vw, 2.25rem);
+  --signs-page-description-font-size: clamp(1rem, 1.1rem + 0.7vw, 1.25rem);
+}
+
+/* =========================================================
+   educational background wrapper
+   ========================================================= */
+
+.educational-bg {
+  --educational-parallax-y: 0px;
+
+  --educational-accent: var(--color-brand-primary);
+  --educational-accent-light: var(--color-brand-primary-light);
+  --educational-accent-dark: var(--color-brand-primary-dark);
+  --educational-accent-soft: rgba(201, 162, 74, 0.24);
+
+  --educational-panel-bg: rgba(17, 16, 13, 0.88);
+  --educational-card-bg: rgba(20, 18, 14, 0.86);
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--color-bg-page);
+}
+
+.educational-bg::before {
+  content: "";
+  position: absolute;
+  inset: -15vh 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background-image: url("/public/images/signs-hero-bg.png");
+  background-size: cover;
+  background-position: center -10vh;
+  background-repeat: no-repeat;
+
+  transform: translate3d(0, var(--educational-parallax-y), 0);
+  will-change: transform;
+
+  /* filter: saturate(0.72) brightness(0.68) contrast(1.08) sepia(0.22); */
+}
+
+@media (max-width: 42rem) {
+  .educational-bg::before {
+    background-size: auto 155svh;
+    background-position: 50% -5vh;
+  }
+}
+
+.educational-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background:
+    linear-gradient(to bottom,
+      rgba(5, 5, 5, 0.34),
+      rgba(5, 5, 5, 0.64)),
+    linear-gradient(135deg,
+      rgba(201, 162, 74, 0.20) 0%,
+      rgba(143, 104, 36, 0.14) 24%,
+      rgba(5, 5, 5, 0.28) 55%,
+      rgba(201, 162, 74, 0.12) 100%);
+}
+
+.educational-bg>* {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================
+   cfo signals
+   ========================================================= */
+
+.cfo-signals {
+  /* min-height: 100vh; */
+  display: flex;
+  align-items: center;
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
+.cfo-signals__inner {
+  width: clamp(20rem, 90%, 90rem);
+}
+
+.cfo-signals__header {
+  max-width: 72rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.cfo-signals__title {
+  font-family: var(--font-family-heading);
+  font-size: var(--signs-hero-title-font-size);
+  line-height: 1.02;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--color-text-primary);
+  text-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+.cfo-signals__title span {
+  display: block;
+  color: var(--educational-accent-light);
+}
+
+.cfo-signals__intro {
+  max-width: 76ch;
+  margin: var(--space-md) auto 0;
+  font-size: var(--signs-page-lead-text-font-size);
+  line-height: 1.55;
+  color: var(--color-text-primary);
+}
+
+.cfo-signals__intro::after {
+  content: "";
+  display: block;
+  width: clamp(4rem, 10vw, 7rem);
+  height: 3px;
+  margin: var(--space-md) auto 0;
+  background: var(--educational-accent);
+}
+
+.cfo-signals__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
+  align-items: stretch;
+  justify-items: stretch;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  margin-top: clamp(1.75rem, 3vw, 3rem);
+  margin-inline: auto;
+}
+
+@media (max-width: 52rem) {
+  .cfo-signals__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cfo-signals__intro span {
+    display: block;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: var(--radius-lg);
+  }
+}
+
+.cfo-signal-card-wrap {
+  container-type: inline-size;
+  display: flex;
+  min-width: 0;
+  height: 100%;
+}
+
+.cfo-signal-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 2rem);
+  padding: clamp(1.1rem, 2vw, 1.75rem);
+  color: var(--color-text-primary);
+  background:
+    linear-gradient(135deg,
+      rgba(46, 46, 46, 0.89),
+      rgba(17, 16, 13, 0.893));
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  box-shadow:
+    0.7rem 0.9rem 2rem rgba(0, 0, 0, 0.3),
+    0.2rem 0.3rem 1rem rgba(201, 162, 74, 0.08);
+}
+
+.cfo-signal-card__icon {
+  --site-icon-size: clamp(4.75rem, 7vw, 6.5rem);
+  --site-icon-color: var(--color-text-primary);
+  --site-icon-color: white;
+  --site-icon-bg: var(--color-brand-primary);
+  --site-icon-border-radius: 50%;
+}
+
+.cfo-signal-card__icon--visibility {
+  --site-icon-url: url(/public/images/icons/signs-icon-visibility.png);
+  --site-icon-image-size: 64%;
+}
+
+.cfo-signal-card__icon--cashflow {
+  --site-icon-url: url(/public/images/icons/signs-icon-cashflow.png);
+  --site-icon-image-size: 70%;
+}
+
+.cfo-signal-card__icon--profitability {
+  --site-icon-url: url(/public/images/icons/signs-icon-profitability.png);
+  --site-icon-image-size: 57%;
+}
+
+.cfo-signal-card__icon--infrastructure {
+  --site-icon-url: url(/public/images/icons/signs-icon-infrastructure.png);
+  --site-icon-image-size: 66%;
+}
+
+.cfo-signal-card__icon--transaction {
+  --site-icon-url: url(/public/images/icons/signs-icon-transaction.png);
+  --site-icon-image-size: 60%;
+}
+
+.cfo-signal-card__icon--support {
+  --site-icon-url: url(/public/images/icons/signs-icon-support.png);
+  --site-icon-image-size: 78%;
+}
+
+.cfo-signal-card__content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.cfo-signal-card__title {
+  font-family: var(--font-family-base);
+  font-size: var(--signs-page-subtitle-font-size);
+  line-height: 1.15;
+  font-weight: var(--font-weight-bold);
+  color: var(--educational-accent-light);
+}
+
+.cfo-signal-card__text {
+  margin-top: 0.75rem;
+  font-size: var(--signs-page-description-font-size);
+  line-height: 1.45;
+  color: var(--color-text-primary);
+}
+
+@container (max-width: 35rem) {
+  .cfo-signal-card {
+    flex-direction: column;
+  }
+
+  .cfo-signal-card__content {
+    text-align: center;
+  }
+}
+
+/* =========================================================
+   fractional cfo fit
+   ========================================================= */
+
+.fractional-cfo-fit {
+  /* min-height: 100vh; */
+  display: flex;
+  align-items: center;
+  padding-block: clamp(3rem, 6vw, 6rem);
+}
+
+.fractional-cfo-fit__inner {
+  width: 100%;
+}
+
+.fractional-cfo-fit__panel {
+  width: min(95%, 92rem);
+  margin-inline: auto;
+  padding: clamp(2rem, 4vw, 4rem);
+  color: var(--color-text-primary);
+  background:
+    linear-gradient(135deg,
+      rgba(27, 24, 18, 0.6),
+      rgba(5, 5, 5, 0.92));
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0.8rem 1rem 2.5rem rgba(0, 0, 0, 0.38),
+    0.25rem 0.35rem 1.25rem rgba(201, 162, 74, 0.1);
+}
+
+@media (max-width: 93.75rem) {
+  .fractional-cfo-fit__panel {
+    border-left: none;
+    border-right: none;
+    width: min(100%, 92rem);
+    border-radius: 0;
+  }
+}
+
+.fractional-cfo-fit__top {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.fractional-cfo-fit-icon__main {
+  --site-icon-url: url(/public/images/icons/signs-fit-icon-main.png);
+
+  --site-icon-size: clamp(7rem, 12vw, 11rem);
+  --site-icon-image-size: 68%;
+  --site-icon-border-radius: var(--radius-circle);
+  --site-icon-border-style: solid;
+  --site-icon-border-width: 2px;
+  --site-icon-border-color: var(--educational-accent-light);
+  --site-icon-color: var(--color-brand-primary-light);
+  --site-icon-bg: rgba(201, 162, 74, 0.08);
+}
+
+.fractional-cfo-fit__title {
+  font-family: var(--font-family-heading);
+  font-size: clamp(3rem, 2rem + 4vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-primary);
+  text-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.48);
+}
+
+.fractional-cfo-fit__title span {
+  display: block;
+  color: var(--educational-accent-light);
+}
+
+.fractional-cfo-fit__subtitle {
+  margin-top: var(--space-sm);
+  font-size: clamp(1.25rem, 1rem + 1vw, 2rem);
+  line-height: 1.2;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.fractional-cfo-fit__subtitle::after {
+  content: "";
+  display: block;
+  width: clamp(5rem, 12vw, 9rem);
+  height: 3px;
+  margin-top: var(--space-lg);
+  background: var(--educational-accent);
+}
+
+.fractional-cfo-fit__body {
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+@media (max-width: 42rem) {
+  .fractional-cfo-fit {
+    padding-block: 0;
+  }
+
+  .fractional-cfo-fit__panel {
+    padding: clamp(3rem, 6vw, 6rem);
+  }
+
+  .fractional-cfo-fit__top {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: var(--space-md);
+  }
+
+  .fractional-cfo-fit__main-icon {
+    --site-icon-size: clamp(5rem, 28vw, 7rem);
+  }
+
+  .fractional-cfo-fit__heading-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .fractional-cfo-fit__title {
+    font-size: clamp(2.25rem, 12vw, 4.25rem);
+  }
+
+  .fractional-cfo-fit__subtitle {
+    max-width: 18rem;
+    margin-inline: auto;
+  }
+
+  .fractional-cfo-fit__subtitle::after {
+    margin-inline: auto;
+  }
+}
+
+.fractional-cfo-fit__rows {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.fractional-cfo-fit__row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 2rem);
+  padding-bottom: clamp(1rem, 2vw, 1.5rem);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.fractional-cfo-fit__row:last-child {
+  border-bottom: 0;
+}
+
+.fractional-cfo-fit-row__icon {
+  --site-icon-size: clamp(4.5rem, 7vw, 6rem);
+  --site-icon-border-radius: 50%;
+  --site-icon-color: var(--color-bg-card);
+  --site-icon-bg:
+    radial-gradient(circle at 35% 25%,
+      var(--educational-accent-light) 0%,
+      var(--educational-accent) 52%,
+      var(--educational-accent-dark) 100%);
+}
+
+.fractional-cfo-fit-row__icon--leader {
+  --site-icon-url: url(/public/images/icons/signs-fit-icon-leader.png);
+  --site-icon-image-size: 75%;
+}
+
+.fractional-cfo-fit-row__icon--solve {
+  --site-icon-url: url(/public/images/icons/signs-fit-icon-solve.png);
+  --site-icon-image-size: 76%;
+  --site-icon-position-x: 6px;
+}
+
+.fractional-cfo-fit-row__icon--access {
+  --site-icon-url: url(/public/images/icons/services-card-icon-strategy.png);
+  --site-icon-image-size: 75%;
+}
+
+.fractional-cfo-fit__row p {
+  max-width: 58rem;
+  font-size: clamp(1.1rem, 0.95rem + 0.7vw, 1.65rem);
+  line-height: 1.35;
+  color: var(--color-text-primary);
+}
+
+.fractional-cfo-fit__row strong {
+  color: var(--educational-accent-light);
+}
+
+@media (max-width: 42rem) {
+  .fractional-cfo-fit__row {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: var(--space-md);
+  }
+
+  .fractional-cfo-fit-row__icon {
+    --site-icon-size: clamp(3.5rem, 16vw, 4.75rem);
+  }
+
+  .fractional-cfo-fit__row p {
+    font-size: clamp(1rem, 4.8vw, 1.25rem);
+    line-height: 1.35;
+  }
+}
+
+@media (max-width: 39.5rem) {
+  .fractional-cfo-fit__rows {
+    gap: var(--space-xl);
+  }
+
+  .fractional-cfo-fit__row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.fractional-cfo-fit__value-box {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 2rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: rgba(201, 162, 74, 0.06);
+}
+
+
+.fractional-cfo-fit__shield {
+  --site-icon-url: url(/public/images/icons/home-credibility-icon-partner.png);
+  --site-icon--size: clamp(4rem, 7vw, 6rem);
+  --site-icon-image-size: 100%;
+  --site-icon-color: var(--educational-accent-light);
+}
+
+.fractional-cfo-fit__value-items {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.fractional-cfo-fit__value-item {
+  min-width: 0;
+  flex: 1 1 0;
+  padding-inline: clamp(0.75rem, 2vw, 1.5rem);
+  border-left: 1px solid var(--color-border-strong);
+}
+
+.fractional-cfo-fit__value-item h3 {
+  font-family: var(--font-family-base);
+  font-size: clamp(1rem, 0.9rem + 0.7vw, 1.45rem);
+  line-height: 1.15;
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  color: var(--educational-accent-light);
+}
+
+.fractional-cfo-fit__value-item p {
+  margin-top: 0.25rem;
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.3rem);
+  line-height: 1.25;
+  color: var(--color-text-primary);
+}
+
+
+
+@media (max-width: 56.25rem) {
+  .fractional-cfo-fit__value-items {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    border-left: 1px solid var(--color-border-strong);
+  }
+
+  .fractional-cfo-fit__value-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    border: none;
+  }
+
+  .fractional-cfo-fit__value-item h3 {
+    flex: 0 0 max-content;
+    white-space: nowrap;
+  }
+
+  .fractional-cfo-fit__value-item p {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 35.33rem) {
+  .fractional-cfo-fit__value-items {
+    gap: 1rem;
+  }
+
+  .fractional-cfo-fit__value-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.2rem;
+    width: 100%;
+    border: none;
+  }
+
+  .fractional-cfo-fit__value-item h3 {
+    flex: initial;
+    white-space: normal;
+  }
+
+  .fractional-cfo-fit__value-item p {
+    flex: initial;
+    margin-top: 0;
+  }
+}
+
+/* =========================================================
+   cfo comparison
+   ========================================================= */
+
+.cfo-comparison {
+  background: var(--color-text-primary);
+  color: var(--color-text-dark);
+  padding-block: clamp(3rem, 6vw, 6rem);
+}
+
+.cfo-comparison__inner {
+  width: min(100% - (var(--container-padding-inline) * 2), 76rem);
+  margin-inline: auto;
+}
+
+.cfo-comparison__header {
+  /* max-width: 64rem; */
+  margin-inline: auto;
+  text-align: center;
+}
+
+.cfo-comparison__title {
+  font-family: var(--font-family-heading);
+  font-size: var(--signs-hero-title-font-size);
+  line-height: 1;
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-dark);
+}
+
+.cfo-comparison__title::after {
+  content: "";
+  display: block;
+  width: clamp(4rem, 8vw, 6rem);
+  height: 3px;
+  margin: var(--space-md) auto 0;
+  background: var(--color-brand-primary);
+}
+
+.cfo-comparison__text {
+  margin-top: var(--space-md);
+  font-size: var(--signs-page-lead-text-font-size);
+  color: var(--color-text-dark);
+}
+
+.cfo-comparison__table-wrap {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  overflow-x: auto;
+  border: 1px solid rgba(21, 21, 21, 0.12);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0.75rem 1rem 2.5rem rgba(0, 0, 0, 0.10),
+    0.25rem 0.35rem 1rem rgba(201, 162, 74, 0.10);
+}
+
+.cfo-comparison__table {
+  width: 100%;
+  min-width: 48rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  background: var(--color-white);
+}
+
+.cfo-comparison__table th,
+.cfo-comparison__table td {
+  padding: clamp(0.9rem, 1.5vw, 1.25rem) clamp(.9rem, 1.5vw, 1.25rem);
+  border-bottom: 1px solid rgba(21, 21, 21, 0.12);
+  font-size: var(--signs-page-description-font-size);
+  line-height: 1.4;
+  text-align: center;
+  color: var(--color-text-dark);
+}
+
+.cfo-comparison__table th:first-child,
+.cfo-comparison__table td:first-child {
+  text-align: left;
+}
+
+.cfo-comparison__table thead th {
+  font-weight: var(--font-weight-bold);
+  background: rgba(244, 239, 229, 0.72);
+}
+
+.cfo-comparison__table tbody th {
+  font-weight: var(--font-weight-regular);
+}
+
+.cfo-comparison__table strong {
+  color: var(--color-text-dark);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Highlight the Fractional CFO column */
+.cfo-comparison__table thead th:nth-child(3),
+.cfo-comparison__table tbody td:nth-child(3) {
+  color: var(--color-brand-primary-dark);
+  font-weight: var(--font-weight-bold);
+  background: rgba(201, 162, 74, 0.34);
+}
+
+/* Make the Fractional CFO header and important values stand out */
+.cfo-comparison__table thead th:nth-child(3),
+.cfo-comparison__table tbody td:nth-child(3) strong {
+  color: var(--color-brand-primary-dark);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Emphasize selected row labels */
+.cfo-comparison__table tbody tr:first-child th,
+.cfo-comparison__table tbody tr:nth-last-child(-n + 2) th {
+  font-weight: var(--font-weight-bold);
+}
+
+.comparison-timeline {
+  color: var(--color-brand-primary-dark);
+}
+
+
+.cfo-comparison__table tbody tr:last-child th,
+.cfo-comparison__table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.cfo-comparison__check {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-dark);
+}
+
+.cfo-comparison__check--accent {
+  color: var(--color-brand-primary-dark);
+}
+
+.cfo-comparison__note {
+  max-width: 72rem;
+  margin: var(--space-md) auto 0;
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  color: var(--color-text-dark);
+  opacity: 0.8;
+}
+
+@media (max-width: 54rem) {
+  .cfo-comparison__inner {
+    width: min(100% - (var(--container-padding-inline) * 2), 42rem);
+  }
+
+  .cfo-comparison__title {
+    line-height: 0.85;
+  }
+
+  .cfo-comparison__title-span {
+    display: block;
+  }
+
+  .cfo-comparison__table-wrap {
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .cfo-comparison__table {
+    min-width: 0;
+    background: transparent;
+  }
+
+  .cfo-comparison__table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .cfo-comparison__table tbody {
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .cfo-comparison__table tbody tr {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: hidden;
+    background: var(--color-white);
+    border: 1px solid rgba(21, 21, 21, 0.12);
+    border-radius: var(--radius-md);
+    box-shadow:
+      0.5rem 0.75rem 1.75rem rgba(0, 0, 0, 0.08),
+      0.2rem 0.3rem 0.8rem rgba(201, 162, 74, 0.08);
+  }
+
+  .cfo-comparison__table th,
+  .cfo-comparison__table td {
+    padding: var(--space-md);
+    border-bottom: 0;
+    text-align: center;
+  }
+
+  .cfo-comparison__table tbody th {
+    grid-column: 1 / -1;
+    font-weight: var(--font-weight-bold);
+    text-align: left;
+    color: var(--color-text-dark);
+    background: rgba(244, 239, 229, 0.72);
+    border-bottom: 1px solid rgba(21, 21, 21, 0.12);
+  }
+
+  .comparison-timeline {
+    width: 10ch;
+    color: var(--color-brand-primary-dark);
+  }
+
+  .cfo-comparison__table tbody td {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 0.35rem;
+    min-height: 4.25rem;
+    color: var(--color-text-dark);
+    padding: 0.5rem 0;
+  }
+
+  .cfo-comparison__table tbody td::before {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .cfo-comparison__table tbody td:nth-child(2)::before {
+    content: "Full-Time CFO";
+  }
+
+  .cfo-comparison__table tbody td:nth-child(3) {
+    color: var(--color-brand-primary-dark);
+    background: rgba(201, 162, 74, 0.34);
+    border-left: 1px solid rgba(21, 21, 21, 0.12);
+  }
+
+  .cfo-comparison__table tbody td:nth-child(3)::before {
+    content: "Fractional CFO";
+    color: var(--color-brand-primary-dark);
+  }
+
+  .cfo-comparison__table strong {
+    color: var(--color-text-dark);
+  }
+
+  .cfo-comparison__check {
+    font-size: 1.35rem;
+  }
+
+  .cfo-comparison__note {
+    text-align: left;
+  }
+
+  .cfo-comparison__table tbody td:empty::after {
+    content: "×";
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+    color: #b42318;
+  }
+}

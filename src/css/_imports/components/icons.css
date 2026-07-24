@@ -1,0 +1,113 @@
+/* =========================================================
+   site icon component
+   Reusable transparent PNG icon system
+   ========================================================= */
+
+.site-icon {
+    /* Image + sizing */
+    --site-icon-url: none;
+    --site-icon-size: 5rem;
+    --site-icon-image-size: 80%;
+
+    /* Icon positioning */
+    --site-icon-position-x: center;
+    --site-icon-position-y: center;
+    --site-icon-position: var(--site-icon-position-x) var(--site-icon-position-y);
+
+    /* Icon color */
+    --site-icon-color: var(--color-brand-primary);
+
+    /* Optional container background and borders */
+    --site-icon-bg: transparent;
+    --site-icon-border-radius: 0;
+    --site-icon-border-width: 0;
+    --site-icon-border-style: none;
+    --site-icon-border-color: none;
+
+    /* Glow layer controls */
+    --site-icon-glow-inset: 0;
+    --site-icon-glow-image-size: var(--site-icon-image-size);
+    --site-icon-glow-opacity: 0;
+    --site-icon-glow-blur: 0.5rem;
+    --site-icon-glow-brightness: 1.6;
+    --site-icon-glow-saturate: 1.2;
+    --site-icon-glow-scale: 1.06;
+
+    /* Crisp icon layer controls */
+    --site-icon-filter: none;
+
+    /* Default behavior */
+    /* Layout */
+    position: relative;
+    isolation: isolate;
+    flex: 0 0 var(--site-icon-size);
+    width: var(--site-icon-size);
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    overflow: visible;
+    /* background, borders */
+    background: var(--site-icon-bg);
+    border-radius: var(--site-icon-border-radius);
+    border: var(--site-icon-border-width), var(--site-icon-border-style), var(--site-icon-border-color);
+}
+
+/* =========================================================
+   site icon glow layer
+   Creates a soft, blurred copy of the icon behind the main icon
+   ========================================================= */
+
+.site-icon::before {
+    content: "";
+    position: absolute;
+    inset: var(--site-icon-glow-inset);
+    z-index: 1;
+
+    background-color: var(--site-icon-color);
+
+    mask-image: var(--site-icon-url);
+    mask-size: var(--site-icon-glow-image-size);
+    mask-position: var(--site-icon-position);
+    mask-repeat: no-repeat;
+
+    -webkit-mask-image: var(--site-icon-url);
+    -webkit-mask-size: var(--site-icon-glow-image-size);
+    -webkit-mask-position: var(--site-icon-position);
+    -webkit-mask-repeat: no-repeat;
+
+    opacity: var(--site-icon-glow-opacity);
+    transform: scale(var(--site-icon-glow-scale));
+
+    filter:
+        blur(var(--site-icon-glow-blur)) brightness(var(--site-icon-glow-brightness)) saturate(var(--site-icon-glow-saturate));
+
+    pointer-events: none;
+}
+
+/* =========================================================
+   site icon crisp layer
+   Creates the sharp visible icon and allows color/filter control
+   ========================================================= */
+
+.site-icon::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+
+    background-color: var(--site-icon-color);
+
+    mask-image: var(--site-icon-url);
+    mask-size: var(--site-icon-image-size);
+    mask-position: var(--site-icon-position);
+    mask-repeat: no-repeat;
+
+    -webkit-mask-image: var(--site-icon-url);
+    -webkit-mask-size: var(--site-icon-image-size);
+    -webkit-mask-position: var(--site-icon-position);
+    -webkit-mask-repeat: no-repeat;
+
+    filter: var(--site-icon-filter);
+
+    pointer-events: none;
+}

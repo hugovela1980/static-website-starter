@@ -1,0 +1,803 @@
+.onboarding-page {
+    --onboarding-hero-title-font-size: clamp(3.5rem, 2.4rem + 4.3vw, 6.9rem);
+
+    --onboarding-page-title-font-size: clamp(3rem, 2.15rem + 2.85vw, 5.35rem);
+    --onboarding-page-lead-text-font-size: clamp(1.2rem, 1.05rem + 0.55vw, 1.55rem);
+    --onboarding-page-subtitle-font-size: clamp(1.75rem, 1.5rem + 1.25vw, 2.25rem);
+    --onboarding-page-description-font-size: clamp(1rem, 0.92rem + 0.36vw, 1.25rem);
+}
+
+.onboarding-vertical {
+    display: none;
+}
+
+/* =========================================================
+onboarding hero 
+========================================================= */
+
+.page-hero--onboarding {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    color: var(--color-text-primary);
+    background:
+        radial-gradient(ellipse at center, rgba(5, 5, 5, 0.78) 0%, rgba(5, 5, 5, 0.62) 38%, rgba(5, 5, 5, 0.42) 68%, rgba(5, 5, 5, 0.28) 100%),
+        linear-gradient(to bottom, rgba(5, 5, 5, 0.18) 0%, rgba(5, 5, 5, 0.36) 56%, rgba(5, 5, 5, 0.82) 100%),
+        url("/public/images/onboarding-hero-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid var(--color-border-strong);
+}
+
+.onboarding-hero__inner {
+    width: min(100% - (var(--container-padding-inline) * 2), 82rem);
+    margin-inline: auto;
+}
+
+.onboarding-hero__content {
+    max-width: 64rem;
+    margin-inline: auto;
+    padding-block: clamp(5rem, 10vw, 8rem);
+    text-align: center;
+}
+
+@media (max-width: 65rem) {
+    .page-hero--onboarding {
+        background-position: 0% center;
+    }
+
+    .onboarding-hero__content {
+        padding-block: clamp(4rem, 16vw, 6rem);
+    }
+}
+
+.onboarding-hero__title {
+    margin-top: var(--space-sm);
+    font-family: var(--font-family-heading);
+    font-size: var(--onboarding-hero-title-font-size);
+    line-height: 1.02;
+    letter-spacing: 0.02em;
+    color: var(--color-brand-primary-light);
+    text-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.72), 0 0.05rem 0.1rem rgba(0, 0, 0, 0.72);
+}
+
+.onboarding-hero__title::after {
+    content: "";
+    display: block;
+    width: clamp(4rem, 8vw, 6rem);
+    height: 2px;
+    margin: clamp(1rem, 2vw, 1.5rem) auto 0;
+    background: var(--color-brand-primary);
+}
+
+.onboarding-hero__text {
+    max-width: 58ch;
+    margin: clamp(1rem, 2vw, 1.5rem) auto 0;
+    font-size: var(--onboarding-page-lead-text-font-size);
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    text-shadow: 0 0.2rem 0.75rem rgba(0, 0, 0, 0.72);
+}
+
+/* =========================================================
+   onboarding flow background
+   ========================================================= */
+
+.onboarding-flow {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    color: var(--color-text-primary);
+    background:
+        linear-gradient(to bottom,
+            rgba(5, 5, 5, 0.04),
+            rgba(5, 5, 5, 0.12)),
+        url("/public/images/onboarding-flow-bg.png");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid var(--color-border-strong);
+}
+
+/* Softens only the gold dot corners */
+.onboarding-flow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    background:
+        radial-gradient(ellipse 32% 36% at 100% 0%,
+            rgba(5, 5, 5, 0.78),
+            rgba(5, 5, 5, 0.58) 32%,
+            rgba(5, 5, 5, 0.22) 52%,
+            transparent 70%),
+
+        radial-gradient(ellipse 32% 36% at 0% 100%,
+            rgba(5, 5, 5, 0.78),
+            rgba(5, 5, 5, 0.58) 32%,
+            rgba(5, 5, 5, 0.22) 52%,
+            transparent 70%);
+}
+
+.onboarding-flow__inner {
+    position: relative;
+    z-index: 1;
+
+    width: min(100% - (var(--container-padding-inline) * 2),
+            var(--container-wide-max-width));
+    margin-inline: auto;
+}
+
+/* =========================================================
+   onboarding flow grid canvas
+   ========================================================= */
+
+.onboarding-flow__layout {
+    --onboarding-flow-row-size: clamp(2.75rem, 12vw, 3.5rem);
+
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    grid-template-rows: repeat(26, var(--onboarding-flow-row-size));
+    gap: var(--space-md);
+}
+
+/* =========================================================
+   Onboarding flow connector SVG layer
+   ========================================================= */
+
+.onboarding-flow__connectors {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+    pointer-events: none;
+
+    color: var(--color-brand-primary-light);
+}
+
+/* =========================================================
+   Main connector line
+   ========================================================= */
+
+.onboarding-flow__connector {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: clamp(0.35rem, 0.45vw, 0.55rem);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.96;
+    vector-effect: non-scaling-stroke;
+
+    /*
+     * The main line remains crisp.
+     * Its glow comes from the separate glow path.
+     */
+    filter: none;
+}
+
+
+/* =========================================================
+   Connector line glow
+   Half the opacity of the dot glow
+   ========================================================= */
+
+.onboarding-flow__connector--glow {
+    stroke-width: clamp(0.9rem, 1.1vw, 1.25rem);
+
+    /*
+     * Dot glow is 0.30.
+     * This is half of that.
+     */
+    opacity: 0.15;
+
+    filter: blur(0.28rem);
+}
+
+
+/* =========================================================
+   Arrowhead
+   Uses the stronger dot-level glow
+   ========================================================= */
+
+.onboarding-flow__connector-marker {
+    overflow: visible;
+}
+
+.onboarding-flow__connector-arrowhead {
+    fill: currentColor;
+
+    filter:
+        drop-shadow(0 0 0.35rem rgba(219, 176, 80, 0.95)) drop-shadow(0 0 1rem rgba(219, 176, 80, 0.45));
+}
+
+
+/* =========================================================
+   Connector starting dot
+   ========================================================= */
+
+.onboarding-flow__connector-dot {
+    fill: currentColor;
+
+    filter:
+        drop-shadow(0 0 0.35rem rgba(219, 176, 80, 0.95)) drop-shadow(0 0 1rem rgba(219, 176, 80, 0.45));
+}
+
+
+/* =========================================================
+   Connector starting-dot glow
+   ========================================================= */
+
+.onboarding-flow__connector-dot--glow {
+    fill: currentColor;
+    opacity: 0.3;
+    filter: blur(0.35rem);
+}
+
+/* =========================================================
+   onboarding flow intro
+   ========================================================= */
+
+.onboarding-flow__intro {
+    grid-column: 1 / 4;
+    grid-row: 2 / 7;
+    align-self: start;
+    z-index: 2;
+}
+
+.onboarding-flow h2 {
+    font-family: var(--font-family-heading);
+    font-size: var(--onboarding-page-title-font-size);
+    line-height: 0.95;
+    letter-spacing: var(--letter-spacing-tight);
+    color: var(--color-text-primary);
+    text-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.58);
+}
+
+.onboarding-flow h2 span {
+    display: block;
+    color: var(--color-brand-primary-light);
+}
+
+.onboarding-flow__heading::after {
+    content: "";
+    display: block;
+    width: clamp(3rem, 7vw, 5rem);
+    height: 2px;
+    margin-top: clamp(0.85rem, 1.5vw, 1.25rem);
+    background: var(--color-brand-primary-light);
+}
+
+.onboarding-flow__lead {
+    max-width: 18ch;
+    margin-top: clamp(1rem, 2vw, 1.5rem);
+    font-size: var(--onboarding-page-lead-text-font-size);
+    line-height: 1.35;
+    color: var(--color-text-secondary);
+}
+
+/* =========================================================
+   onboarding flow cards
+   ========================================================= */
+
+.onboarding-flow__card {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 1.8vw, 1.75rem);
+    min-width: 0;
+    max-width: 60rem;
+    min-height: 15rem;
+    padding: clamp(1rem, 1.7vw, 1.5rem);
+    color: var(--color-text-primary);
+    background:
+        linear-gradient(165deg,
+            rgb(37, 36, 36),
+            rgb(5, 5, 5));
+    border: 3px solid var(--color-brand-primary-light);
+    border-radius: var(--radius-md);
+    box-shadow:
+        0.7rem 0.9rem 2rem rgba(0, 0, 0, 0.34),
+        0.15rem 0.25rem 1rem rgba(201, 162, 74, 0.10);
+}
+
+/* Step 1 crosses the center spine */
+.onboarding-flow__card--one {
+    grid-column: 4 / 9;
+    grid-row: 3;
+    align-self: start;
+    min-height: 16rem;
+    transform: translateY(2rem);
+}
+
+/* Step 2 begins at the center spine */
+.onboarding-flow__card--two {
+    grid-column: 1 / 6;
+    grid-row: 10;
+    align-self: end;
+}
+
+/* Step 3 ends at the center spine */
+.onboarding-flow__card--three {
+    grid-column: 4 / 9;
+    grid-row: 14;
+    align-self: end;
+}
+
+/* Step 4 begins at the center spine */
+.onboarding-flow__card--four {
+    grid-column: 1 / 6;
+    grid-row: 18;
+    align-self: end;
+}
+
+/* Step 5 ends at the center spine */
+.onboarding-flow__card--five {
+    grid-column: 4 / 9;
+    grid-row: 22;
+    align-self: end;
+}
+
+/* =========================================================
+   onboarding flow number badge
+   ========================================================= */
+
+.onboarding-flow__number {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: clamp(3.25rem, 4vw, 4rem);
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    transform: translate(-1rem, -1rem);
+    font-family: var(--font-family-heading);
+    font-size: clamp(2.35rem, 2rem + 2.5vw, 3.25rem);
+    line-height: 1;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-dark);
+    background:
+        linear-gradient(135deg,
+            var(--color-brand-primary-light),
+            var(--color-brand-primary-dark));
+    box-shadow:
+        0.25rem 0.35rem 0.8rem rgba(0, 0, 0, 0.28),
+        inset 0.08rem 0.08rem 0.35rem rgba(255, 255, 255, 0.25);
+}
+
+/* Card 1: badge centered on the top edge */
+.onboarding-flow__card--one .onboarding-flow__number {
+    left: 50%;
+    transform: translate(-50%, -3rem);
+}
+
+/* Even cards: badges stay on the left side */
+/* This is already handled by the base .onboarding-flow__number style */
+
+/* Odd cards after card 1: badges move to the right side */
+.onboarding-flow__card--three .onboarding-flow__number,
+.onboarding-flow__card--five .onboarding-flow__number {
+    left: auto;
+    right: 0;
+    transform: translate(1rem, -1rem);
+}
+
+/* =========================================================
+   onboarding flow icons
+   ========================================================= */
+
+.onboarding-flow__icon {
+    --site-icon-size: clamp(5rem, 6.5vw, 7.75rem);
+    --site-icon-image-size: 50%;
+    --site-icon-bg:
+        radial-gradient(circle at center,
+            rgba(201, 162, 74, 0.14),
+            rgba(201, 162, 74, 0.04) 58%,
+            transparent 72%);
+
+    border: 1px solid var(--color-brand-primary-light);
+    border-radius: 50%;
+}
+
+.onboarding-flow__icon--discovery {
+    --site-icon-url: url("/public/images/icons/onboarding-icon-card-1.png");
+}
+
+.onboarding-flow__icon--review {
+    --site-icon-url: url("/public/images/icons/onboarding-icon-card-2.png");
+    --site-icon-image-size: 65%;
+}
+
+.onboarding-flow__icon--roadmap {
+    --site-icon-url: url("/public/images/icons/onboarding-icon-card-3.png");
+    --site-icon-image-size: 60%;
+
+    position: relative;
+    background-image: var(--icon-url);
+    background-position: center;
+    background-repeat: no-repeat;
+    isolation: isolate;
+}
+
+.onboarding-flow__icon--support {
+    --site-icon-url: url("/public/images/icons/onboarding-icon-card-4.png");
+    --site-icon-image-size: 60%;
+}
+
+.onboarding-flow__icon--partnership {
+    --site-icon-url: url("/public/images/icons/onboarding-icon-card-5.png");
+    --site-icon-image-size: 58%;
+}
+
+/* =========================================================
+   onboarding flow card content
+   ========================================================= */
+
+.onboarding-flow__content {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 1.8vw, 1.5rem);
+}
+
+.onboarding-flow h3 {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 12ch;
+    justify-self: flex-end;
+    font-family: var(--font-family-base);
+    font-size: var(--onboarding-page-subtitle-font-size);
+    line-height: 1.08;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+
+    text-align: center;
+}
+
+.onboarding-flow__text {
+    flex: 0 1 clamp(22rem, 70%, 28rem);
+    min-width: 14rem;
+    font-size: var(--onboarding-page-description-font-size);
+    line-height: 1.4;
+    color: var(--color-text-secondary);
+}
+
+.onboarding-flow__description {
+    color: var(--color-text-secondary);
+}
+
+.onboarding-flow__outcome {
+    margin-top: clamp(0.5rem, 1vw, 0.75rem);
+    color: var(--color-text-secondary);
+}
+
+.onboarding-flow__outcome strong {
+    color: var(--color-brand-primary-light);
+}
+
+/* =========================================================
+   onboarding flow goal callout
+   ========================================================= */
+
+.onboarding-flow__goal {
+    position: relative;
+    z-index: 2;
+    grid-column: 2 / 9;
+    grid-row: 24;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    gap: clamp(3rem, 4vw, 3.75rem);
+    color: var(--color-text-primary);
+}
+
+.onboarding-flow__goal-icon {
+    --site-icon-url: url("/public/images/icons/onboarding-icon-target.png");
+    --site-icon-size: clamp(13rem, 14vw, 15rem);
+    --site-icon-image-size: 83%;
+    --site-icon-color: var(--color-brand-primary-light);
+
+    /* No container glow */
+    --site-icon-bg: transparent;
+
+    /* Move the artwork so the bullseye feels centered */
+    --site-icon-position-x: 100%;
+    --site-icon-position-y: 5%;
+
+    /* Keep the component's duplicate glow layer off */
+    --site-icon-glow-opacity: 0;
+
+    /* Keep the crisp icon layer clean */
+    --site-icon-filter: none;
+
+    /* Apply the glow to the rendered icon component itself */
+    filter:
+        drop-shadow(0 0 0.45rem rgba(219, 176, 80, 0.60)) drop-shadow(0 0 1rem rgba(219, 176, 80, 0.40)) drop-shadow(0 0 2rem rgba(219, 176, 80, 0.30)) drop-shadow(0 0 3.25rem rgba(219, 176, 80, 0.20));
+
+    border-radius: 50%;
+}
+
+.onboarding-flow__goal-content {
+    min-width: 0;
+}
+
+.onboarding-flow__goal-title {
+    font-family: var(--font-family-heading);
+    font-size: var(--onboarding-page-title-font-size);
+    line-height: 1.1;
+    letter-spacing: var(--letter-spacing-normal);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+}
+
+.onboarding-flow__goal-title span {
+    color: var(--color-brand-primary-light);
+}
+
+.onboarding-flow__goal-text {
+    margin-top: var(--space-xs);
+    font-size: var(--onboarding-page-lead-text-font-size);
+    line-height: 1.4;
+    color: var(--color-text-secondary);
+}
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Media Queries
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+/* Tablet Screen Sizes */
+@media (max-width: 86.125rem) {
+    .onboarding-flow__layout {
+        grid-template-rows: repeat(30, var(--onboarding-flow-row-size));
+    }
+
+    .onboarding-flow__intro {
+        grid-column: 1 / 7;
+        grid-row: 2 / 7;
+        justify-self: center;
+    }
+
+    .onboarding-flow__lead {
+        max-width: 40ch;
+    }
+
+    .onboarding-flow__card {
+        width: min(100%, 60rem);
+    }
+
+    .onboarding-flow__card--one {
+        grid-column: 1 / -1;
+        grid-row: 6;
+    }
+
+    .onboarding-flow__card--two {
+        grid-column: 1 / -1;
+        grid-row: 13;
+        justify-self: end;
+    }
+
+    .onboarding-flow__card--three {
+        grid-column: 1 / -1;
+        grid-row: 17;
+        justify-self: start;
+    }
+
+    .onboarding-flow__card--four {
+        grid-column: 1 / -1;
+        grid-row: 21;
+        justify-self: end;
+    }
+
+    .onboarding-flow__card--five {
+        grid-column: 1 / -1;
+        grid-row: 25;
+        justify-self: start;
+    }
+
+    .onboarding-flow__goal {
+        grid-column: 3 / -1;
+        grid-row: 28;
+        justify-self: center;
+    }
+
+    .onboarding-flow__goal p span {
+        display: block;
+    }
+
+    .onboarding-flow__card--one .onboarding-flow__number,
+    .onboarding-flow__card--three .onboarding-flow__number,
+    .onboarding-flow__card--five .onboarding-flow__number {
+        left: 0;
+        right: auto;
+        transform: translate(-1rem, -1rem);
+    }
+
+    .onboarding-flow__card--two .onboarding-flow__number,
+    .onboarding-flow__card--four .onboarding-flow__number {
+        left: auto;
+        right: 0;
+        transform: translate(1rem, -1rem);
+    }
+}
+
+/* Small Tablet Screen Sizes */
+@media (max-width: 78.125rem) {
+    .onboarding-flow__layout {
+        grid-template-rows: repeat(35, var(--onboarding-flow-row-size));
+    }
+
+    .onboarding-flow__connectors {
+        display: none;
+    }
+
+    .onboarding-flow__intro {
+        grid-column: 1 / -1;
+        grid-row: 2 / 5;
+        align-self: center;
+        justify-self: center;
+    }
+
+    .onboarding-flow__intro h2 {
+        display: grid;
+        place-items: center;
+    }
+
+    .onboarding-flow__lead {
+        text-align: center;
+    }
+
+    .onboarding-flow__card--one {
+        grid-column: 1 / -1;
+        grid-row: 6;
+        justify-self: center;
+    }
+
+    .onboarding-flow__card--two {
+        grid-column: 1 / -1;
+        grid-row: 13;
+        justify-self: center;
+    }
+
+    .onboarding-flow__card--three {
+        grid-column: 1 / -1;
+        grid-row: 17;
+        justify-self: center;
+    }
+
+    .onboarding-flow__card--four {
+        grid-column: 1 / -1;
+        grid-row: 21;
+        justify-self: center;
+    }
+
+    .onboarding-flow__card--five {
+        grid-column: 1 / -1;
+        grid-row: 25;
+        justify-self: center;
+    }
+
+    .onboarding-flow__goal {
+        grid-column: 1 / -1;
+        grid-row: 29;
+        justify-self: center;
+        transform: translateY(-2rem);
+
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .onboarding-flow__goal p {
+        text-align: center;
+    }
+
+    .onboarding-flow__goal p span {
+        display: inline;
+    }
+
+    .onboarding-flow__card .onboarding-flow__number {
+        left: 50%;
+        right: auto;
+        transform: translate(-50%, -1rem);
+    }
+}
+
+/* =========================================================
+   Small tablets and phone sizes
+   ========================================================= */
+
+@media (max-width: 66.5rem) {
+    .onboarding-flow__layout {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: none;
+        grid-auto-rows: auto;
+
+        row-gap: clamp(4.5rem, 9vw, 6rem);
+
+        padding-block: clamp(4rem, 8vw, 6rem);
+    }
+
+    .onboarding-flow__intro,
+    .onboarding-flow__card,
+    .onboarding-flow__goal {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .onboarding-flow__intro {
+        width: min(100%, 48rem);
+        justify-self: center;
+    }
+
+    .onboarding-flow__lead {
+        margin: auto;
+        padding-top: 1rem;
+    }
+
+    .onboarding-flow__card {
+        width: min(100%, 48rem);
+        min-height: 0;
+
+        justify-self: center;
+
+        flex-direction: column;
+        align-items: center;
+
+        gap: clamp(1.25rem, 4vw, 2rem);
+
+        padding: clamp(1.5rem, 5vw, 2.5rem);
+        padding-top: clamp(3rem, 7vw, 4.5rem);
+    }
+
+    .onboarding-flow__content {
+        flex: 0 1 auto;
+
+        width: 100%;
+        max-width: 65ch;
+
+        flex-direction: column;
+        align-items: center;
+
+        gap: clamp(0.9rem, 3vw, 1.4rem);
+    }
+
+    .onboarding-flow__content h3 {
+        width: 100%;
+        max-width: 20ch;
+    }
+
+    .onboarding-flow__text {
+        flex: 0 1 auto;
+
+        width: 100%;
+        min-width: 0;
+        max-width: 58ch;
+    }
+
+    .onboarding-flow__card--one {
+        transform: none;
+    }
+
+    .onboarding-flow__goal {
+        justify-self: center;
+
+        transform: none;
+
+        margin-top: clamp(0.5rem, 2vw, 1.5rem);
+    }
+}
+
+@media (max-width: 36.125rem) {
+    .onboarding-flow__goal-content p span {
+        display: block;
+    }
+}

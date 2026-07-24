@@ -1,0 +1,38 @@
+/* ------------------------------
+   Global Layout Helpers
+   ------------------------------ */
+
+main {
+  flex: 1;
+}
+
+.container {
+  width: min(100% - (var(--container-padding-inline) * 2), var(--container-max-width));
+  margin-inline: auto;
+}
+
+.container--wide {
+  width: min(100% - (var(--container-padding-inline) * 2), var(--container-wide-max-width));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--space-2xl);
+}
+
+.section__eyebrow {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-brand-primary);
+}
+
+.section__title {
+  margin-top: var(--space-xs);
+}
+
+.section__text {
+  margin-top: var(--space-sm);
+  max-width: 62ch;
+}

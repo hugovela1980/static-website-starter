@@ -1,0 +1,92 @@
+---
+layout: layouts/base.njk
+title: Contact | Company Name
+permalink: /contact/
+---
+
+<section class="contact-page">
+  <div class="contact-page__inner container">
+    <header class="contact-page__header">
+      <h1 class="contact-page__title">Schedule a Consultation</h1>
+
+      <p class="contact-page__intro">
+        Tell us about your goals and challenges. We'll be in touch to set up a time that works for you.
+      </p>
+    </header>
+
+    <div class="contact-page__layout">
+      <div class="contact-page__form-wrap">
+        <form class="contact-form" name="contact" method="POST" action="/thank-you/" netlify>
+          <input type="hidden" name="form-name" value="contact">
+          <input type="hidden" name="subject" value="New website inquiry from Company Name">
+
+          <div class="contact-form__field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required>
+          </div>
+
+          <div class="contact-form__field">
+            <label for="company-name">Company Name</label>
+            <input id="company-name" name="company-name" type="text">
+          </div>
+
+          <div class="contact-form__field">
+            <label for="annual-revenue">Annual Revenue</label>
+
+            <select id="annual-revenue" name="annual-revenue">
+              <option value=""></option>
+              <option value="under-1m">Under $1M</option>
+              <option value="1m-5m">$1M–5M</option>
+              <option value="5m-20m">$5M–20M</option>
+              <option value="20m-100m">$20M–100M</option>
+              <option value="100m-plus">$100M+</option>
+            </select>
+          </div>
+
+          <div class="contact-form__field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+          </div>
+
+          <div class="contact-form__field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="14">
+          </div>
+
+          <div class="contact-form__field">
+            <label for="message">Tell us about your business and what you'd like help with.</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+
+          <div class="contact-form__privacy">
+            <div class="site-icon contact-form-privacy__icon"></div>
+            <p>
+              We respect your privacy. Your information will never be shared.
+            </p>
+          </div>
+
+          <button class="button button--primary contact-form__button" type="submit">
+            <span class="button__text">Request Consultation</span>
+
+            <svg class="button__icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14"></path>
+              <path d="M13 6l6 6-6 6"></path>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <aside class="contact-next-step" aria-labelledby="contact-next-step-title">
+        <div class="site-icon contact-next-step__icon" aria-hidden="true"></div>
+
+        <h2 class="contact-next-step__title" id="contact-next-step-title">
+          What Happens Next?
+        </h2>
+
+        <p class="contact-next-step__text">
+          Submit the form, and we'll follow up to schedule a brief introductory conversation.
+        </p>
+      </aside>
+    </div>
+  </div>
+</section>

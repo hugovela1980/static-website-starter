@@ -1,0 +1,249 @@
+/* =========================================================
+   contact page
+   ========================================================= */
+
+.contact-page {
+    --contact-page-title-font-size: clamp(2.75rem, 1.5rem + 4.25vw, 6.5rem);
+    --contact-page-lead-text-font-size: clamp(1rem, 1.0rem + 0.7vw, 1.75rem);
+    --contact-page-description-font-size: clamp(.75rem, 0.75rem + 0.6vw, 1.25rem);
+
+    min-height: calc(100svh - var(--site-header-height));
+    padding-block: clamp(3rem, 7vw, 6rem);
+    background:
+        radial-gradient(circle at 20% 20%,
+            rgba(201, 162, 74, 0.08),
+            transparent 32rem),
+        var(--color-bg-page);
+    border-bottom: 1px solid var(--color-border-subtle);
+    padding-top: 2.5rem;
+}
+
+.contact-page__inner {
+    width: min(100% - (var(--container-padding-inline) * 2), 76rem);
+    margin-inline: auto;
+}
+
+.contact-page__header {
+    max-width: 58rem;
+}
+
+.contact-page__title {
+    font-family: var(--font-family-heading);
+    font-size: var(--contact-page-title-font-size);
+    line-height: 0.95;
+    letter-spacing: var(--letter-spacing-tight);
+    color: var(--color-text-primary);
+    text-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.45);
+}
+
+.contact-page__intro {
+    max-width: 62ch;
+    margin-top: var(--space-sm);
+    font-size: var(--contact-page-lead-text-font-size);
+    line-height: 1.55;
+    color: var(--color-text-primary);
+}
+
+.contact-page__layout {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: clamp(2rem, 5vw, 4rem);
+    margin-top: clamp(2rem, 5vw, 4rem);
+}
+
+.contact-page__form-wrap {
+    flex: 1 1 36rem;
+    min-width: min(100%, 20rem);
+}
+
+.contact-form {
+    display: grid;
+    gap: var(--space-lg);
+}
+
+.contact-form__field {
+    display: grid;
+    gap: var(--space-xs);
+}
+
+.contact-form label {
+    font-size: var(--contact-page-description-font-size);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+}
+
+.contact-form select:invalid {
+    color: var(--color-text-secondary);
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+    width: 100%;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-sm);
+    padding: clamp(0.85rem, 1.5vw, 1.1rem);
+    color: var(--color-text-primary);
+    background: rgba(20, 18, 14, 0.84);
+    box-shadow: inset 0 0 0.75rem rgba(0, 0, 0, 0.2);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+    border-color: var(--color-border-strong);
+}
+
+.contact-form select {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    background-image:
+        linear-gradient(45deg, transparent 50%, var(--color-brand-primary-light) 50%),
+        linear-gradient(135deg, var(--color-brand-primary-light) 50%, transparent 50%);
+    background-position:
+        calc(100% - 1.15rem) 50%,
+        calc(100% - 0.8rem) 50%;
+    background-size:
+        0.35rem 0.35rem,
+        0.35rem 0.35rem;
+    background-repeat: no-repeat;
+    padding-right: 2.5rem;
+}
+
+.contact-form textarea {
+    min-height: clamp(10rem, 22vw, 14rem);
+}
+
+.contact-form__button {
+    justify-self: start;
+    margin-top: var(--space-xs);
+}
+
+/* =========================================================
+   contact next step card
+   ========================================================= */
+
+.contact-form__privacy {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding-block: clamp(0.85rem, 1.5vw, 1rem);
+    color: var(--color-text-secondary);
+}
+
+.contact-form-privacy__icon {
+    --site-icon-url: url(/public/images/icons/home-credibility-icon-partner.png);
+    --site-icon-size: 2rem;
+    --site-icon-image-size: 100%;
+    --site-icon-color: var(--color-brand-primary-light);
+}
+
+.contact-form__privacy p {
+    font-size: clamp(0.85rem, 0.8rem + 0.25vw, 1rem);
+    line-height: 1.45;
+    color: var(--color-text-secondary);
+}
+
+/* =========================================================
+   contact next step card
+   ========================================================= */
+
+.contact-next-step {
+    --contact-next-step-padding: clamp(.75rem, 3vw, 1.5rem);
+
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    flex: 0 1 clamp(24rem, 28vw, 28rem);
+    min-width: min(100%, 20rem);
+    min-height: clamp(30rem, 50vw, 40rem);
+
+    padding: var(--contact-next-step-padding);
+    color: var(--color-text-primary);
+    background:
+        linear-gradient(135deg,
+            rgba(27, 24, 18, 0.92),
+            rgba(5, 5, 5, 0.94));
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-md);
+    box-shadow:
+        0.8rem 1rem 2.5rem rgba(0, 0, 0, 0.34),
+        0.25rem 0.35rem 1.25rem rgba(201, 162, 74, 0.08);
+}
+
+.contact-next-step::after {
+    content: "";
+    position: absolute;
+    right: calc(var(--contact-next-step-padding) - clamp(2.5rem, 1rem + 2vw, 3rem));
+    bottom: calc(var(--contact-next-step-padding) - clamp(1.25rem, 1.25rem + 2vw, 1.5rem));
+
+    width: clamp(16rem, 24vw, 21rem);
+    aspect-ratio: 460 / 320;
+
+    background-image: url("/public/images/icons/contact-icon-bars.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+
+    opacity: 0.58;
+    pointer-events: none;
+}
+
+.contact-next-step__icon {
+    position: relative;
+    z-index: 1;
+
+    --site-icon-url: url(/public/images/icons/cta-final-icon-calendar.png);
+    --site-icon-size: clamp(4.5rem, 7.5vw, 6rem);
+    --site-icon-image-size: 52%;
+    --site-icon-border-width: 1px;
+    --site-icon-border-style: solid;
+    --site-icon-border-color: var(--color-brand-primary);
+    --site-icon-border-radius: 50%;
+    --site-icon-color: var(--color-brand-primary);
+    --site-icon-bg: rgba(201, 162, 74, 0.06);
+}
+
+.contact-next-step__icon-svg {
+    height: 52%;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.15;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.contact-next-step__title {
+    position: relative;
+    z-index: 1;
+    margin-top: clamp(1.5rem, 3vw, 2.25rem);
+    font-family: var(--font-family-heading);
+    font-size: clamp(3rem, 1.5rem + 1.75vw, 3.75rem);
+    line-height: 1;
+    letter-spacing: var(--letter-spacing-tight);
+    color: var(--color-brand-primary);
+}
+
+.contact-next-step__title::after {
+    content: "";
+    display: block;
+    width: clamp(3rem, 6vw, 4.5rem);
+    height: 2px;
+    margin-top: var(--space-md);
+    background: var(--color-brand-primary);
+}
+
+.contact-next-step__text {
+    position: relative;
+    z-index: 1;
+    max-width: 24ch;
+    margin-top: var(--space-md);
+    font-size: clamp(1.25rem, 0.9rem + 0.35vw, 1.375rem);
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+}

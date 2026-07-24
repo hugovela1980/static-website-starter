@@ -1,0 +1,91 @@
+/* =========================================================
+   final CTA
+   ========================================================= */
+
+.final-cta {
+  background: var(--color-bg-page);
+}
+
+.final-cta__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: clamp(2rem, 5vw, 5rem);
+  padding-block: var(--space-2xl);
+}
+
+.final-cta__content {
+  flex: 2 1 545px;
+  min-width: min(100%, 545px);
+}
+
+.final-cta__title {
+  font-family: var(--font-family-heading);
+  font-size: clamp(2rem, 1.25rem + 3vw, 4rem);
+  line-height: 1;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: var(--color-brand-primary-light);
+}
+
+.final-cta__text {
+  max-width: 40rem;
+  margin-top: var(--space-md);
+  font-size: var(--font-size-md);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.final-cta__action {
+  flex: 1 1 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-md);
+  padding-left: clamp(2rem, 4vw, 4rem);
+  border-left: 1px solid var(--color-border-subtle);
+}
+
+.final-cta__prompt {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-lg);
+}
+
+.final-cta__icon {
+    --site-icon-url: url("/public/images/icons/cta-final-icon-calendar.png");
+    --site-icon-size: clamp(4.5rem, 7vw, 6rem);
+    --site-icon-image-size: 100%;
+    --site-icon-color: var(--color-brand-primary);
+
+    --site-icon-filter:
+        brightness(1.08)
+        saturate(1.08)
+        drop-shadow(0 0 0.35rem rgba(219, 176, 80, 0.35));
+
+    align-self: center;
+}
+
+.final-cta__action-text {
+  display: flex;
+  align-items: center;
+  max-width: 24rem;
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+.final-cta__action-content {
+  display: flex;
+  align-items: flex-start;
+}
+
+@media (max-width: 63.1875rem) {
+  .final-cta__action {
+    padding-left: 0;
+    padding-top: var(--space-lg);
+    border-left: 0;
+    border-top: 1px solid var(--color-border-subtle);
+  }
+}

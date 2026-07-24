@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Eleventy build output
+_site/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Netlify
+.netlify/

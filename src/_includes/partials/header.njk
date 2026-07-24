@@ -1,0 +1,129 @@
+<header class="site-header">
+    <div class="site-header__inner">
+        <a class="site-header__logo" href="/index/" aria-label="Company Name home">
+            <img class="site-header__logo-image" src="/public/images/logo.png" alt="Company Name, LLC">
+        </a>
+
+        <nav class="site-header__nav" aria-label="Main navigation">
+            <ul class="site-header__nav-list">
+                <li class="site-header__nav-item">
+                    <a class="site-header__nav-link" href="/about/" {% if page.url=="/about/" %}aria-current="page" {%
+                        endif %}>
+                        About
+                    </a>
+                </li>
+
+                <li class="site-header__nav-item">
+                    <a class="site-header__nav-link" href="/services/" {% if page.url=="/services/"
+                        %}aria-current="page" {% endif %}>
+                        Services
+                    </a>
+                </li>
+
+                <li class="site-header__nav-item">
+                    <a class="site-header__nav-link" href="/industries/" {% if page.url=="/industries/"
+                        %}aria-current="page" {% endif %}>
+                        Industries
+                    </a>
+                </li>
+
+                <li class="site-header__nav-item">
+                    <a class="site-header__nav-link" href="/signs-you-need-a-cfo/" {% if
+                        page.url=="/signs-you-need-a-cfo/" %}aria-current="page" {% endif %}>
+                        Signs you need a CFO
+                    </a>
+                </li>
+
+                <li class="site-header__nav-item">
+                    <a class="site-header__nav-link" href="/onboarding/" {% if page.url=="/onboarding/"
+                        %}aria-current="page" {% endif %}>
+                        Onboarding
+                    </a>
+                </li>
+
+                <li class="site-header__nav-item">
+                    <a class="site-header__nav-link" href="/contact/" {% if page.url=="/contact/" %}aria-current="page"
+                        {% endif %}>
+                        Contact
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <button class="site-header__menu-toggle" type="button" aria-label="Open menu" aria-controls="mobile-menu"
+            aria-expanded="false">
+            <span class="site-header__menu-line"></span>
+            <span class="site-header__menu-line"></span>
+            <span class="site-header__menu-line"></span>
+        </button>
+    </div>
+
+    <div class="site-header__mobile-menu" id="mobile-menu" role="dialog" aria-modal="true"
+        aria-label="Mobile navigation" hidden>
+        <div class="site-header__mobile-panel">
+            <div class="site-header__mobile-top">
+                <button class="site-header__mobile-close" type="button" aria-label="Close menu">
+                    <svg class="site-header__mobile-close-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M6 6l12 12"></path>
+                        <path d="M18 6L6 18"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="site-header__mobile-content container--wide">
+                <nav class="site-header__mobile-nav" aria-label="Mobile navigation">
+                    <ul class="site-header__mobile-nav-list">
+                        <li>
+                            <a class="site-header__mobile-nav-link" href="/index/" {% if page.url=="/"
+                                %}aria-current="page" {% endif %}>
+                                Home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="site-header__mobile-nav-link" href="/about/" {% if page.url=="/about/"
+                                %}aria-current="page" {% endif %}>
+                                About
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="site-header__mobile-nav-link" href="/services/" {% if page.url=="/services/"
+                                %}aria-current="page" {% endif %}>
+                                Services
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="site-header__mobile-nav-link" href="/industries/" {% if page.url=="/industries/"
+                                %}aria-current="page" {% endif %}>
+                                Industries
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="site-header__mobile-nav-link" href="/signs-you-need-a-cfo/" {% if
+                                page.url=="/signs-you-need-a-cfo/" %}aria-current="page" {% endif %}>
+                                Signs you need a CFO
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="site-header__mobile-nav-link" href="/onboarding/" {% if page.url=="/onboarding/"
+                                %}aria-current="page" {% endif %}>
+                                Onboarding
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="site-header__mobile-nav-link" href="/contact/" {% if page.url=="/contact/"
+                                %}aria-current="page" {% endif %}>
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
