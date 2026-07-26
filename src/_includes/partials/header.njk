@@ -6,47 +6,15 @@
 
         <nav class="site-header__nav" aria-label="Main navigation">
             <ul class="site-header__nav-list">
-                <li class="site-header__nav-item">
-                    <a class="site-header__nav-link" href="/about/" {% if page.url=="/about/" %}aria-current="page" {%
-                        endif %}>
-                        About
-                    </a>
-                </li>
 
+                {% for item in site.navigation %}
                 <li class="site-header__nav-item">
-                    <a class="site-header__nav-link" href="/services/" {% if page.url=="/services/"
-                        %}aria-current="page" {% endif %}>
-                        Services
+                    <a class="site-header__nav-link" href="{{ item.url }}" {% if page.url==item.url %}
+                        aria-current="page" {% endif %}>
+                        {{ item.label }}
                     </a>
                 </li>
-
-                <li class="site-header__nav-item">
-                    <a class="site-header__nav-link" href="/industries/" {% if page.url=="/industries/"
-                        %}aria-current="page" {% endif %}>
-                        Industries
-                    </a>
-                </li>
-
-                <li class="site-header__nav-item">
-                    <a class="site-header__nav-link" href="/signs-you-need-a-cfo/" {% if
-                        page.url=="/signs-you-need-a-cfo/" %}aria-current="page" {% endif %}>
-                        Signs you need a CFO
-                    </a>
-                </li>
-
-                <li class="site-header__nav-item">
-                    <a class="site-header__nav-link" href="/onboarding/" {% if page.url=="/onboarding/"
-                        %}aria-current="page" {% endif %}>
-                        Onboarding
-                    </a>
-                </li>
-
-                <li class="site-header__nav-item">
-                    <a class="site-header__nav-link" href="/contact/" {% if page.url=="/contact/" %}aria-current="page"
-                        {% endif %}>
-                        Contact
-                    </a>
-                </li>
+                {% endfor %}
             </ul>
         </nav>
 
@@ -73,54 +41,19 @@
             <div class="site-header__mobile-content container--wide">
                 <nav class="site-header__mobile-nav" aria-label="Mobile navigation">
                     <ul class="site-header__mobile-nav-list">
-                        <li>
-                            <a class="site-header__mobile-nav-link" href="/index/" {% if page.url=="/"
-                                %}aria-current="page" {% endif %}>
-                                Home
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="site-header__mobile-nav-link" href="/about/" {% if page.url=="/about/"
-                                %}aria-current="page" {% endif %}>
-                                About
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="site-header__mobile-nav-link" href="/services/" {% if page.url=="/services/"
-                                %}aria-current="page" {% endif %}>
-                                Services
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="site-header__mobile-nav-link" href="/industries/" {% if page.url=="/industries/"
-                                %}aria-current="page" {% endif %}>
-                                Industries
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="site-header__mobile-nav-link" href="/signs-you-need-a-cfo/" {% if
-                                page.url=="/signs-you-need-a-cfo/" %}aria-current="page" {% endif %}>
-                                Signs you need a CFO
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="site-header__mobile-nav-link" href="/onboarding/" {% if page.url=="/onboarding/"
-                                %}aria-current="page" {% endif %}>
-                                Onboarding
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="site-header__mobile-nav-link" href="/contact/" {% if page.url=="/contact/"
-                                %}aria-current="page" {% endif %}>
-                                Contact
-                            </a>
-                        </li>
+                        {% for item in site.navigation %}
+                            <li>
+                                <a
+                                    class="site-header__mobile-nav-link"
+                                    href="{{ item.url }}"
+                                    {% if page.url == item.url %}
+                                        aria-current="page"
+                                    {% endif %}
+                                >
+                                    {{ item.label }}
+                                </a>
+                            </li>
+                        {% endfor %}
                     </ul>
                 </nav>
             </div>
