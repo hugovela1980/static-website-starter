@@ -1,0 +1,122 @@
+{# Standard browser/search title #}
+{% if title %}
+    {% set metaTitle = title ~ " | " ~ site.name %}
+{% else %}
+    {% set metaTitle = site.name %}
+{% endif %}
+
+{# Page description, falling back to the global description #}
+{% set metaDescription = description or site.description %}
+
+{# Canonical URL #}
+{% set canonicalUrl = canonical or (site.url ~ page.url) %}
+
+{# Social-sharing metadata #}
+{% set socialTitle = ogTitle or metaTitle %}
+{% set socialDescription = ogDescription or metaDescription %}
+{% set socialImagePath = ogImage or site.ogImage %}
+{% set socialImageAlt = ogImageAlt or site.ogImageAlt %}
+{% set socialImageUrl = site.url ~ socialImagePath %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    {# Page title and search description #}
+    <title>{{ metaTitle | escape }}</title>
+
+    <meta
+        name="description"
+        content="{{ metaDescription | escape }}"
+    >
+
+    {# Preferred page URL #}
+    <link
+        rel="canonical"
+        href="{{ canonicalUrl | escape }}"
+    >
+
+    {# Browser interface color #}
+    <meta
+        name="theme-color"
+        content="{{ site.themeColor }}"
+    >
+
+    {# Open Graph social-sharing metadata #}
+    <meta
+        property="og:title"
+        content="{{ socialTitle | escape }}"
+    >
+
+    <meta
+        property="og:description"
+        content="{{ socialDescription | escape }}"
+    >
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:url"
+        content="{{ canonicalUrl | escape }}"
+    >
+
+    <meta
+        property="og:site_name"
+        content="{{ site.name | escape }}"
+    >
+
+    <meta
+        property="og:locale"
+        content="{{ site.locale }}"
+    >
+
+    <meta
+        property="og:image"
+        content="{{ socialImageUrl | escape }}"
+    >
+
+    <meta
+        property="og:image:alt"
+        content="{{ socialImageAlt | escape }}"
+    >
+
+    {# Fonts #}
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    {# Site assets #}
+    <link
+        rel="stylesheet"
+        href="/css/main.css"
+    >
+
+    <link
+        rel="icon"
+        href="{{ site.favicon }}"
+        type="image/x-icon"
+    >
+
+    <script
+        type="module"
+        src="/js/main.js"
+    ></script>
+</head>

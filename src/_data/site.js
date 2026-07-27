@@ -1,8 +1,20 @@
 module.exports = {
   name: "Company Name",
+  legalName: "Company Name, LLC",
   shortName: "Company",
   description: "Professional services for growing organizations.",
+  currentYear: new Date().getFullYear(),
+
   url: "https://example.com",
+
+  language: "en",
+  locale: "en_US",
+
+  themeColor: "#1f2937",
+  favicon: "/public/favicon/favicon.ico",
+
+  ogImage: "/public/images/social-preview.png",
+  ogImageAlt: `${this.name} logo on a branded background`,
 
   navigation: [
     { label: 'Home', url: '/' },
